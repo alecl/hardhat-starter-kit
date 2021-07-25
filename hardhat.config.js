@@ -15,10 +15,10 @@ require("./tasks/block-number")
 require("./tasks/random-number-consumer")
 require("./tasks/price-consumer")
 require("./tasks/api-consumer")
-
-
+ 
+ 
 require('dotenv').config()
-
+ 
 const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || process.env.ALCHEMY_MAINNET_RPC_URL || "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "https://eth-rinkeby.alchemyapi.io/v2/your-api-key"
 const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL || "https://eth-kovan.alchemyapi.io/v2/your-api-key"
@@ -26,9 +26,9 @@ const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
 // optional
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "your private key"
-
+ 
 module.exports = {
-    defaultNetwork: "hardhat",
+    defaultNetwork: "kovan",
     networks: {
         hardhat: {
             // // If you want to do some forking, uncomment this
@@ -40,10 +40,10 @@ module.exports = {
         },
         kovan: {
             url: KOVAN_RPC_URL,
-            // accounts: [PRIVATE_KEY],
-            accounts: {
-                mnemonic: MNEMONIC,
-            },
+             accounts: [PRIVATE_KEY],
+            //accounts: {
+            //    mnemonic: MNEMONIC,
+            //},
             saveDeployments: true,
         },
         rinkeby: {
@@ -89,4 +89,4 @@ module.exports = {
         timeout: 100000
     }
 }
-
+ 
